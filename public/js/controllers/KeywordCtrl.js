@@ -1,6 +1,6 @@
 angular.module('KeywordCtrl', []).controller('KeywordController',
 		function($scope,$http, Keyword) {
-
+			$scope.formData = {};
 			Keyword.get().success(function(data) {
 				$scope.keywords = data;
 			});

@@ -39,7 +39,7 @@ module.exports = function(app) {
 		return;
 	} else {
 		console.log("Keyword created");
-		return res.send({ status: 'OK', tshirt:tshirt });
+		//return res.send({ status: 'OK', tshirt:tshirt });
 	}
 	});
   };

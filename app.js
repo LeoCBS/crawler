@@ -86,6 +86,7 @@ var options = {
 };
 var mongoose = require('mongoose');
 var Keyword = require('./models/Keyword.js');
+var User = mongoose.model('User', { name: String, email: String });
 mongoose.connect(process.env.MONGODB_URL);
 var fs = require('fs');
 var cheerio = require("cheerio");
@@ -164,8 +165,6 @@ function parseHtml(stream,data){
 				console.log('tem promocao com a keyword:' + keyword.keyword);
 				console.log(title);
 				
-				var User = mongoose.model('User', { name: String, email: String });
-
 				User.find({}).stream().on('data', function (user) {
 					var mailOptions = {
 					    from: 'Promo Crawler <promocrawler1@gmail.com>', // sender address
@@ -194,7 +193,7 @@ function findKeywordsAndusers(data, callback){
 	callback(stream, data);
 }
 
-loadHTML();
+//loadHTML();
 
 app.listen(port);
 console.log("App listening on port " + port);
