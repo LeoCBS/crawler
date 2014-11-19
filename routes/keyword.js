@@ -44,9 +44,21 @@ module.exports = function(app) {
 	});
   };
 
+  deleteKeyword = function(req, res) {
+		keyword.remove({
+			_id : req.params.todo_id
+		}, function(err, todo) {
+			if (err)
+				res.send(err);
+
+			//getTodos(res);
+		});
+	};
+
 
   //Link routes and actions
   app.get('/keyword/list', findAllKeywords);
+  app.delete('/keyword/del', deleteKeyword);
   //app.get('/tshirt/:id', findById);
   app.post('/keyword/add', addkeyword);
   //app.put('/tshirt/:id', updateTshirt);

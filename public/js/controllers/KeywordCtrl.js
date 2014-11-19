@@ -11,6 +11,17 @@ angular.module('KeywordCtrl', []).controller('KeywordController',
 					$scope.keywords = data; 
 				});
 			};
+
+			$scope.delete = function(id) {
+				$scope.loading = true;
+
+				Keyword.delete(id)
+					// if successful creation, call our get function to get all the new todos
+					.success(function(data) {
+						$scope.loading = false;
+						$scope.keywords = data; // assign our new list of todos
+					});
+			};
 		});
 
 
