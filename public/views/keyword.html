@@ -1,0 +1,36 @@
+<div class="jumbotron text-center">
+	<h1>keywords</h1>
+	<p>Listagem de palavras-chave</p>
+
+	<!-- List -->
+	<div id="keyword-list" class="row">
+		<div class="col-sm-4 col-sm-offset-4">
+
+			<!-- LOOP OVER THE Keywords IN $scope.keywords -->
+			<div class="checkbox" ng-repeat="keyword in keywords">
+				<label> <input type="checkbox"
+					ng-click="delete(keyword._id)"> {{ keyword.keyword }}
+				</label>
+			</div>
+			<p class="text-center" ng-show="loading">
+				<span class="fa fa-spinner fa-spin fa-3x"></span>
+			</p>
+		</div>
+	</div>
+
+	<!-- Form -->
+	<div id="keyword-form" class="row">
+		<div class="col-sm-8 col-sm-offset-2 text-center">
+			<form>
+				<div class="form-group">
+					<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+					<input type="text" class="form-control input-lg text-center"
+						placeholder="Adicione uma palavra-chave para busca de promoções"
+						ng-model="formData.keyword">
+				</div>
+				<button type="submit" class="btn btn-primary btn-lg"
+					ng-click="create()">Adicionar</button>
+			</form>
+		</div>
+	</div>
+</div>

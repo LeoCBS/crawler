@@ -1,0 +1,9 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    a(href="/userlist")= 'Lista de usuários'+' | '
+    a(href="/keywordslist")= 'Lista de palavras-chaves'
+    block content

@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    h1.
+        Lista palavras chaves
+    ul
+        each keyword, i in keywordslist
+            li
+                p= keyword.keyword

@@ -1,0 +1,7 @@
+extends layout
+
+block content
+    h1= title
+    form#formAddPromo(name="addpromo",method="post",action="/addpromo")
+        input#inputKeyword(type="text", placeholder="Keyword", name="keyword")
+        button#btnSubmit(type="submit") Salvar

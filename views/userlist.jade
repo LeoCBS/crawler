@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    h1.
+        Lista de Usuários
+    ul
+        each user, i in userlist
+            li
+                p='Nome: ' + user.name + ' | E-mail: ' +user.email
