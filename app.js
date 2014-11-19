@@ -194,7 +194,7 @@ function findKeywordsAndusers(data, callback){
 	callback(stream, data);
 }
 
-//loadHTML();
+loadHTML();
 
 app.listen(port);
 console.log("App listening on port " + port);

@@ -5,14 +5,8 @@ angular.module('KeywordCtrl', []).controller('KeywordController',
 				$scope.keywords = data;
 			});
 
-			// CREATE =================================================================
-			$scope.create = function() {
-				// validate the formData to make sure that something is there
-				// if form is empty, nothing will happen
-				
-				$scope.loading = true;
+			$scope.createKeyword = function() {
 				Keyword.create($scope.formData).success(function(data) {
-					$scope.loading = false;
 					$scope.formData = {}; 
 					$scope.keywords = data; 
 				});
