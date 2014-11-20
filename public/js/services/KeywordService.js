@@ -15,7 +15,7 @@ angular.module('KeywordService', []).factory('Keyword', ['$http', function($http
 
         // call to DELETE a nerd
         delete : function(id) {
-            return $http.delete('/keyword/del' + id);
+            return $http.delete('/keyword/del/' + id);
         }
     }       
 

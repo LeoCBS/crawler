@@ -198,4 +198,9 @@ function findKeywordsAndusers(data, callback){
 app.listen(port);
 console.log("App listening on port " + port);
 
+//application -------------------------------------------------------------
+app.get('*', function(req, res) {
+	res.sendfile('./views/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+});
+
 module.exports = app;

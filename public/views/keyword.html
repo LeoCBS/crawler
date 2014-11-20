@@ -1,7 +1,10 @@
 <div class="jumbotron text-center">
-	<h1>keywords</h1>
 	<p>Listagem de palavras-chave</p>
 
+	<div class="alert alert-success" role="alert"
+		ng-if="hasMsg">{{ msgToUser }}</div>
+	<div class="alert alert-danger" role="alert"
+		ng-if="hasMsgError">{{ msgToUser }}</div>
 	<!-- List -->
 	<div id="keyword-list" class="row">
 		<div class="col-sm-4 col-sm-offset-4">

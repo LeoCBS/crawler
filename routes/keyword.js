@@ -1,5 +1,19 @@
 var Keyword = require('../models/Keyword.js');
 
+
+function findAll(res){
+	Keyword.find(function(err, keywords) {
+	      if(!err) {
+	        return res.send(keywords);
+	      } else {
+	        res.statusCode = 500;
+	        console.log('Internal error(%d): %s',res.statusCode,err.message);
+	        return res.send({ error: 'Server error' });
+	      }
+	    });
+	
+}
+
 module.exports = function(app) {
 
 
@@ -38,27 +52,32 @@ module.exports = function(app) {
 		res.send({ error:err });
 		return;
 	} else {
-		console.log("Keyword created");
-		//return res.send({ status: 'OK', tshirt:tshirt });
+		return findAll(res);
 	}
 	});
   };
 
   deleteKeyword = function(req, res) {
-		keyword.remove({
-			_id : req.params.todo_id
-		}, function(err, todo) {
-			if (err)
-				res.send(err);
+		console.log("DELETE - /keyword/del/" + req.params.id_keyword);
 
-			//getTodos(res);
+		var keyword = new Keyword({
+			_id: req.params.id_keyword,
+		});
+		keyword.remove(function(err, data) {
+			if(!err) {
+				return findAll(res);
+		      } else {
+		        res.statusCode = 500;
+		        console.log('Internal error(%d): %s',res.statusCode,err.message);
+		        return res.send({ error: 'Server error' });
+		      }
 		});
 	};
 
 
   //Link routes and actions
   app.get('/keyword/list', findAllKeywords);
-  app.delete('/keyword/del', deleteKeyword);
+  app.delete('/keyword/del/:id_keyword', deleteKeyword);
   //app.get('/tshirt/:id', findById);
   app.post('/keyword/add', addkeyword);
   //app.put('/tshirt/:id', updateTshirt);
