@@ -86,6 +86,7 @@ var options = {
 };
 var mongoose = require('mongoose');
 var Keyword = require('./models/Keyword.js');
+var Promotion = require('./models/Promotion.js');
 var User = mongoose.model('User', { name: String, email: String });
 mongoose.connect(process.env.MONGODB_URL);
 var fs = require('fs');
@@ -135,7 +136,14 @@ setInterval(function(){
 	  }
 	  else console.log("error");  
 	});
-},  1 * 60 * 1000);
+},  10 * 60 * 1000);
+
+
+function findPromo(title, callback){
+
+	var stream = Promotion.find({title:title}).stream();
+	callback(stream, data);
+}
 
 function saveTitlePromo(data){
     // Set our collection
@@ -168,18 +176,18 @@ function parseHtml(stream,data){
 				User.find({}).stream().on('data', function (user) {
 					var mailOptions = {
 					    from: 'Promo Crawler <promocrawler1@gmail.com>', // sender address
-					    to: 'leocborgess@gmail.com', // list of receivers
-					    subject: 'Promocao encontrada',
+					    to: user.email, // list of receivers
+					    subject: 'Promocao encontrada: ' + title,
 					    html: title
 					};
 				        console.log('enviando email para :' +user.email);
-					/*transporter.sendMail(mailOptions, function(error, info){
+					transporter.sendMail(mailOptions, function(error, info){
 					    if(error){
-						console.log(error);
+					    	console.log(error);
 					    }else{
-						console.log('Message sent: ' + info.response);
+					    	console.log('Message sent: ' + info.response);
 					    }
-					});*/
+					});
 				});
 			}
 		});
