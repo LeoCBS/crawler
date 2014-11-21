@@ -131,7 +131,7 @@ setInterval(function(){
 	console.log('verificando promocoes do hardmob as:' + new Date());
 	download(options, function(data) {
 	  if (data) {
-	    parseHtml(data);
+		  findKeywordsAndusers(data, parseHtml);
 	  }
 	  else console.log("error");  
 	});
