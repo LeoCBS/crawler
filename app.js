@@ -18,7 +18,7 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'jade');
+app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -127,7 +127,7 @@ function loadHTML(){
 }
 
 
-/*setInterval(function(){
+setInterval(function(){
 	console.log('verificando promocoes do hardmob as:' + new Date());
 	download(options, function(data) {
 	  if (data) {
@@ -135,7 +135,7 @@ function loadHTML(){
 	  }
 	  else console.log("error");  
 	});
-},  1 * 60 * 1000);*/
+},  1 * 60 * 1000);
 
 function saveTitlePromo(data){
     // Set our collection
